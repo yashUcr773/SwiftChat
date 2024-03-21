@@ -6,9 +6,12 @@ import InputComponent from "./InputComponent"
 import ButtonComponent from "./ButtonComponent"
 import AuthSocialButtonsComponent from "./AuthSocialButtonsComponent"
 import { BsGithub, BsGoogle } from "react-icons/bs"
+import axios from "axios"
+import toast from "react-hot-toast"
+import { signIn } from "next-auth/react"
 
 type VARIANT = 'LOGIN' | "REGISTER"
-type SOCIALS = 'GITHUB' | 'GOOGLE'
+type SOCIALS = 'github' | 'google'
 
 export default function AuthFormComponent() {
 
@@ -31,20 +34,50 @@ export default function AuthFormComponent() {
         }
     })
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         setLoading(true)
 
-        if (variant === 'REGISTER') {
-
+        try {
+            if (variant === 'REGISTER') {
+                await axios.post('/api/register', data)
+                toast.success('Sign up successful!')
+            }
+            if (variant === 'LOGIN') {
+                let result = await signIn('credentials', {
+                    ...data, redirect: false
+                })
+                if (result?.error) {
+                    toast.error('Invalid Credentials!')
+                }
+                if (result?.ok && !result?.error) {
+                    toast.success('Log in Successful!')
+                }
+            }
+        } catch (e) {
+            toast.error('Something went wrong!')
         }
-        if (variant === 'LOGIN') {
-
+        finally {
+            setLoading(false)
         }
 
     }
 
-    const socialAction = (action: SOCIALS) => {
-        setLoading(true)
+    const socialAction = async (action: SOCIALS) => {
+        try {
+            setLoading(true)
+            const result = await signIn(action, { redirect: false })
+            if (result?.error) {
+                toast.error('Invalid Credentials!')
+            }
+            if (result?.ok && !result?.error) {
+                toast.success('Log in Successful!')
+            }
+        } catch (e) {
+            toast.error('Something went wrong!')
+        }
+        finally {
+            setLoading(false)
+        }
     }
 
 
@@ -54,7 +87,7 @@ export default function AuthFormComponent() {
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                     {
                         variant === 'REGISTER' && (
-                            <InputComponent label="Name" id="Name" disabled={loading} register={register} errors={errors} />
+                            <InputComponent label="Name" id="name" disabled={loading} register={register} errors={errors} />
                         )
                     }
                     <InputComponent label="Email Address" id="email" disabled={loading} type="email" register={register} errors={errors} />
@@ -75,8 +108,8 @@ export default function AuthFormComponent() {
                         </div>
                     </div>
                     <div className="mt-6 flex gap-2">
-                        <AuthSocialButtonsComponent icon={BsGithub} onClick={() => socialAction('GITHUB')}></AuthSocialButtonsComponent>
-                        <AuthSocialButtonsComponent icon={BsGoogle} onClick={() => socialAction('GOOGLE')}></AuthSocialButtonsComponent>
+                        <AuthSocialButtonsComponent icon={BsGithub} onClick={() => socialAction('github')}></AuthSocialButtonsComponent>
+                        <AuthSocialButtonsComponent icon={BsGoogle} onClick={() => socialAction('google')}></AuthSocialButtonsComponent>
                     </div>
                 </div>
                 <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
