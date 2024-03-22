@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { SubmitHandler, FieldValues, useForm } from "react-hook-form"
 import InputComponent from "./InputComponent"
 import ButtonComponent from "./ButtonComponent"
@@ -8,15 +8,25 @@ import AuthSocialButtonsComponent from "./AuthSocialButtonsComponent"
 import { BsGithub, BsGoogle } from "react-icons/bs"
 import axios from "axios"
 import toast from "react-hot-toast"
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 type VARIANT = 'LOGIN' | "REGISTER"
 type SOCIALS = 'github' | 'google'
 
 export default function AuthFormComponent() {
 
+    const session = useSession()
+    const router = useRouter()
     const [variant, setVariant] = useState<VARIANT>('LOGIN')
     const [loading, setLoading] = useState(false)
+
+
+    useEffect(() => {
+        if (session.status === 'authenticated') {
+            router.push('/users')
+        }
+    }, [session])
 
     const toggleVariant = useCallback(() => {
         if (variant === 'LOGIN') {
@@ -41,6 +51,8 @@ export default function AuthFormComponent() {
             if (variant === 'REGISTER') {
                 await axios.post('/api/register', data)
                 toast.success('Sign up successful!')
+                router.push('/users')
+
             }
             if (variant === 'LOGIN') {
                 let result = await signIn('credentials', {
@@ -51,7 +63,9 @@ export default function AuthFormComponent() {
                 }
                 if (result?.ok && !result?.error) {
                     toast.success('Log in Successful!')
+                    router.push('/users')
                 }
+
             }
         } catch (e) {
             toast.error('Something went wrong!')
@@ -71,6 +85,7 @@ export default function AuthFormComponent() {
             }
             if (result?.ok && !result?.error) {
                 toast.success('Log in Successful!')
+                router.push('/users')
             }
         } catch (e) {
             toast.error('Something went wrong!')
