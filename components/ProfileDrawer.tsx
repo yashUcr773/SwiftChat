@@ -8,6 +8,7 @@ import Avatar from "./Avatar"
 import Modal from "./Modal"
 import ConfirmModal from "./ConfirmModal"
 import AvatarGroup from "./AvatarGroup"
+import useActiveList from "@/app/hooks/useActiveLists"
 
 interface ProfileDrawerProps {
     data: Conversation & {
@@ -25,6 +26,8 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
     }, [otherUser.createdAt])
 
     const [confirmOpen, setConfirmOpen] = useState(false)
+    const { members } = useActiveList()
+    const isActive = members.indexOf(otherUser?.email!) === -1
 
     const title = useMemo(() => {
         return data.name || otherUser.name
@@ -34,8 +37,9 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
         if (data.isGroup) {
             return `${data.users.length} members`
         }
-        return 'Active'
-    }, [data])
+        return isActive ? 'Active' : "offline";
+
+    }, [data, isActive])
 
 
     return (
