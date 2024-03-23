@@ -7,6 +7,7 @@ import { IoClose, IoTrash } from 'react-icons/io5'
 import Avatar from "./Avatar"
 import Modal from "./Modal"
 import ConfirmModal from "./ConfirmModal"
+import AvatarGroup from "./AvatarGroup"
 
 interface ProfileDrawerProps {
     data: Conversation & {
@@ -68,7 +69,8 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                             <div className="relative mt-6 flex-1 px-4 sm:px-6">
                                                 <div className="flex flex-col items-center">
                                                     <div className="mb-2">
-                                                        <Avatar user={otherUser}></Avatar>
+                                                        {data.isGroup ? (<AvatarGroup users={data.users}></AvatarGroup>) : (<Avatar user={otherUser}></Avatar>)}
+
                                                     </div>
                                                     <div>{title}</div>
                                                     <div className="text-sm text-gray-500">{statusText}</div>
@@ -104,6 +106,15 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                                                         </dd>
                                                                     </div>
                                                                 </>
+                                                            )}
+
+                                                            {data.isGroup && (
+                                                                <div>
+                                                                    <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">Emails</dt>
+                                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
+                                                                        {data.users.map(user => user.email).join(', ')}
+                                                                    </dd>
+                                                                </div>
                                                             )}
                                                         </dl>
                                                     </div>
