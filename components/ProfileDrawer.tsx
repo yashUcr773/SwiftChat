@@ -30,12 +30,12 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
     const isActive = members.indexOf(otherUser?.email!) === -1
 
     const title = useMemo(() => {
-        return data.name || otherUser.name
-    }, [data.name, otherUser.name])
+        return data?.name || otherUser?.name
+    }, [data?.name, otherUser?.name])
 
     const statusText = useMemo(() => {
-        if (data.isGroup) {
-            return `${data.users.length} members`
+        if (data?.isGroup) {
+            return `${data?.users.length} members`
         }
         return isActive ? 'Active' : "offline";
 
@@ -73,7 +73,7 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                             <div className="relative mt-6 flex-1 px-4 sm:px-6">
                                                 <div className="flex flex-col items-center">
                                                     <div className="mb-2">
-                                                        {data.isGroup ? (<AvatarGroup users={data.users}></AvatarGroup>) : (<Avatar user={otherUser}></Avatar>)}
+                                                        {data?.isGroup ? (<AvatarGroup users={data?.users}></AvatarGroup>) : (<Avatar user={otherUser}></Avatar>)}
 
                                                     </div>
                                                     <div>{title}</div>
@@ -90,7 +90,7 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                                     </div>
                                                     <div className="w-full pb-5 pt-5 sm:px-0 sm:pt-0">
                                                         <dl className="space-y-8 px-4 sm:space-y-6 sm:px-6">
-                                                            {!data.isGroup && (<div>
+                                                            {!data?.isGroup && (<div>
                                                                 <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">
                                                                     Email
                                                                 </dt>
@@ -98,7 +98,7 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                                                     {otherUser.email}
                                                                 </dd>
                                                             </div>)}
-                                                            {!data.isGroup && (
+                                                            {!data?.isGroup && (
                                                                 <>
                                                                     <hr></hr>
                                                                     <div>
@@ -112,11 +112,11 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                                                 </>
                                                             )}
 
-                                                            {data.isGroup && (
+                                                            {data?.isGroup && (
                                                                 <div>
                                                                     <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">Emails</dt>
                                                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-                                                                        {data.users.map(user => user.email).join(', ')}
+                                                                        {data?.users.map(user => user.email).join(', ')}
                                                                     </dd>
                                                                 </div>
                                                             )}

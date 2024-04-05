@@ -24,8 +24,8 @@ export default function SettingsModal({ isOpen, onClose, currentUser }: Settings
 
     const { register, handleSubmit, setValue, watch, formState: { errors } } = useForm<FieldValues>({
         defaultValues: {
-            name: currentUser.name,
-            image: currentUser.image
+            name: currentUser?.name,
+            image: currentUser?.image
         }
     })
 
@@ -68,7 +68,7 @@ export default function SettingsModal({ isOpen, onClose, currentUser }: Settings
                             <div>
                                 <label className="block text-sm font-medium leading-6 text-gray-900">Photo</label>
                                 <div className="mt-2 flex items-center gap-x-3">
-                                    <Image src={image || currentUser.image || '/images/placeholder.jpg'} width={48} height={48} className="rounded-full" alt="avatar"></Image>
+                                    <Image src={image || currentUser?.image || '/images/placeholder.jpg'} width={48} height={48} className="rounded-full" alt="avatar"></Image>
                                     <CldUploadButton options={{ maxFiles: 1 }} onSuccess={handleUpload} uploadPreset="bojx8ogh">
                                         <ButtonComponent disabled={isLoading} secondary type="button">Change</ButtonComponent>
                                     </CldUploadButton>

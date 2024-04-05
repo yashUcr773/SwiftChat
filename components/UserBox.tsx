@@ -18,10 +18,10 @@ export default function UserBox({ data }: UserBoxProps) {
         setIsLoading(true)
         try {
             const result = await axios.post('/api/conversations', {
-                userId: data.id
+                userId: data?.id
             })
 
-            router.push(`/conversations/${result.data.id}`)
+            router.push(`/conversations/${result.data?.id}`)
 
         } catch (e) {
             console.log(e)
@@ -43,7 +43,7 @@ export default function UserBox({ data }: UserBoxProps) {
                     <div className="focus:outline-none">
                         <div className="flex justify-between items-center mb-1">
                             <p className="text-sm font-medium text-gray-900">
-                                {data.name}
+                                {data?.name}
                             </p>
                         </div>
                     </div>

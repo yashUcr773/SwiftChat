@@ -14,7 +14,7 @@ export default function UsersList({ items }: UsersListProps) {
                         People
                     </div>
                 </div>
-                {items.map(item => (
+                {items && items.map(item => (
                     <UserBox key={item.id} data={item}></UserBox>)
                 )}
             </div>

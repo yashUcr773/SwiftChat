@@ -72,7 +72,7 @@ export default function ConversationsList({ initialItems, users }: Conversations
             pusherClient.unbind('conversation:remove', removeHandler)
         }
 
-    }, [pusherKey])
+    }, [pusherKey, conversationId, router])
 
     return (
         <>

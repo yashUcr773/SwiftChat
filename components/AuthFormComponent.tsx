@@ -26,7 +26,7 @@ export default function AuthFormComponent() {
         if (session.status === 'authenticated') {
             router.push('/users')
         }
-    }, [session])
+    }, [router, session])
 
     const toggleVariant = useCallback(() => {
         if (variant === 'LOGIN') {

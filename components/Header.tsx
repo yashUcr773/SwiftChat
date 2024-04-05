@@ -43,7 +43,7 @@ export default function Header({ conversation }: HeaderProps) {
                     {conversation.isGroup ? (<AvatarGroup users={conversation.users}></AvatarGroup>) : (<Avatar user={otherUser}></Avatar>)}
                     <div className="flex flex-col">
                         <div>
-                            {conversation.name || otherUser.name}
+                            {conversation?.name || otherUser?.name}
                         </div>
                         <div className="text-sm font-light text-neutral-500">
                             {statusText}

@@ -63,7 +63,7 @@ export default function GroupChatModal({ isOpen, onClose, users }: GroupChatModa
                         <div className="mt-10 flex flex-col gap-y-8">
                             <InputComponent register={register} label="Name" id="name" disabled={isLoading} required errors={errors}></InputComponent>
                             <Select disabled={isLoading} label='Members' options={
-                                users.map(user => ({ label: user.name, value: user.id }))} onChange={(value) => { setValue('members', value, { shouldValidate: true }) }} value={members}></Select>
+                                users.map(user => ({ label: user?.name, value: user.id }))} onChange={(value) => { setValue('members', value, { shouldValidate: true }) }} value={members}></Select>
                         </div>
                     </div>
                 </div>

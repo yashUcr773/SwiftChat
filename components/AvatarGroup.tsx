@@ -19,7 +19,7 @@ export default function AvatarGroup({ users = [] }: AvatarGroupProps) {
         <div className="relative h-11 w-11">
             {slicedUsers.map((user, index) => (
                 <div key={user.id} className={clsx('absolute inline-block rounded-full overflow-hidden h-[21px] w-[21px]', positionMap[index as keyof typeof positionMap])}>
-                    <Image alt="avatar" src={user.image || '/images/placeholder.jpg'} fill></Image>
+                    <Image alt="avatar" src={user?.image || '/images/placeholder.jpg'} fill></Image>
                 </div>
             ))}
         </div>
