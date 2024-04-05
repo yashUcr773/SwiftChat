@@ -63,7 +63,7 @@ export default function ProfileDrawer({ data, isOpen, onClose }: ProfileDrawerPr
                                             <div className=" px-4 sm:px-6">
                                                 <div className="flex items-start justify-end">
                                                     <div className="ml-3 flex h-7 items-center">
-                                                        <button onClick={onClose} className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2" type="button">
+                                                        <button onClick={onClose} className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" type="button">
                                                             <span className="sr-only">Close Panel</span>
                                                             <IoClose size={24}></IoClose>
                                                         </button>

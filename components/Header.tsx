@@ -37,7 +37,7 @@ export default function Header({ conversation }: HeaderProps) {
             <ProfileDrawer data={conversation} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)}></ProfileDrawer>
             <div className="bg-white w-full flex border-b-[1px] sm:px-4 py-3 px-4 lg:px-6 justify-between items-center shadow-sm">
                 <div className="flex gap-3 items-center">
-                    <Link href='/conversations' className="lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer">
+                    <Link href='/conversations' className="lg:hidden block text-green-500 hover:text-green-600 transition cursor-pointer">
                         <HiChevronLeft size={32}></HiChevronLeft>
                     </Link>
                     {conversation.isGroup ? (<AvatarGroup users={conversation.users}></AvatarGroup>) : (<Avatar user={otherUser}></Avatar>)}
@@ -50,7 +50,7 @@ export default function Header({ conversation }: HeaderProps) {
                         </div>
                     </div>
                 </div>
-                <HiEllipsisHorizontal size={32} onClick={() => { setDrawerOpen(true) }} className="text-sky-500 hover:text-sky-600 cursor-pointer"></HiEllipsisHorizontal>
+                <HiEllipsisHorizontal size={32} onClick={() => { setDrawerOpen(true) }} className="text-green-500 hover:text-green-600 cursor-pointer"></HiEllipsisHorizontal>
             </div>
         </>
     )

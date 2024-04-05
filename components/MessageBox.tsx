@@ -26,7 +26,7 @@ export default function MessageBox({ data, isLast }: MessageBoxProps) {
     const container = clsx("flex gap-3 p-4", isOwn && "justify-end")
     const avatar = clsx(isOwn && 'order-2')
     const body = clsx("flex flex-col gap-2", isOwn && "items-end")
-    const message = clsx("text-sm w-fit overflow-hidden", isOwn ? 'bg-sky-500 text-white' : 'bg-gray-100', data?.image ? 'rounded-md p-0 !bg-gray-100' : "rounded-full py-2 px-3")
+    const message = clsx("text-sm w-fit overflow-hidden", isOwn ? 'bg-green-500 text-white' : 'bg-gray-100', data?.image ? 'rounded-md p-0 !bg-gray-100' : "rounded-full py-2 px-3")
 
     return (
         <div className={container}>

@@ -30,11 +30,11 @@ export default function Footer() {
     return (
         <div className="py-4 px-4 bg-white border-t flex items-center gap-2 lg:gap-4 w-full">
             <CldUploadButton options={{ maxFiles: 1 }} onSuccess={handleUpload} uploadPreset="bojx8ogh">
-                <HiPhoto size={30} className="text-sky-500"></HiPhoto>
+                <HiPhoto size={30} className="text-green-500"></HiPhoto>
             </CldUploadButton>
             <form onSubmit={handleSubmit(onSubmit)} className="flex items-center gap-2 lg:gap-4 w-full">
                 <MessageInput id="message" register={register} errors={errors} required placeholder='Write a message'></MessageInput>
-                <button type="submit" className="rounded-full p-2 bg-sky-500 cursor-pointer hover:bg-sky-600 transition">
+                <button type="submit" className="rounded-full p-2 bg-green-500 cursor-pointer hover:bg-green-600 transition">
                     <HiPaperAirplane className="text-white" size={18}></HiPaperAirplane>
                 </button>
             </form>
