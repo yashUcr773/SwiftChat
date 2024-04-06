@@ -54,19 +54,17 @@ export default function AuthFormComponent() {
                 router.push('/users')
 
             }
-            if (variant === 'LOGIN') {
-                let result = await signIn('credentials', {
-                    ...data, redirect: false
-                })
-                if (result?.error) {
-                    toast.error('Invalid Credentials!')
-                }
-                if (result?.ok && !result?.error) {
-                    toast.success('Log in Successful!')
-                    router.push('/users')
-                }
-
+            let result = await signIn('credentials', {
+                ...data, redirect: false
+            })
+            if (result?.error) {
+                toast.error('Invalid Credentials!')
             }
+            if (result?.ok && !result?.error) {
+                toast.success('Log in Successful!')
+                router.push('/users')
+            }
+
         } catch (e) {
             toast.error('Something went wrong!')
         }
