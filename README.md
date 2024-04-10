@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SwiftChat App
 
-## Getting Started
+Demo - [swiftchat.dev](https://swiftchat.dev)
 
-First, run the development server:
+## Introduction
+SwiftChat is a peer-to-peer messaging application inspired from Facebook messenger. It allows users to exchange text messages, emojis, and images seamlessly. The application supports authentication through various platforms like GitHub and Google, ensuring a secure and personalized user experience. Messaging features are powered by the Pusher API, facilitating real-time communication. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **Message Firends:** Peer-to-peer messaging
+- **Make Groups:** Group chat functionality
+- **Not Limited to texts:** Sending text messages, emojis, and images
+- **Safe and secure:** Authentication with NextAuth supporting OAuth with GitHub and Google
+- **Send Messages in an instant:** Real-time messaging using Pusher API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 14**: Powering the frontend and server-side rendering.
+- **Form Validation**: Implemented using Zod and React Hook Form.
+- **Toasts**: Utilizing React Toast for feedback messages.
+- **Authentication**: Managed by NextAuth, supporting Google and GitHub OAuth.
+- **Database**: MongoDB
+- **Upload Management**: Handled by Cloudinary.
+- **CSS**: Styled with Tailwind CSS.
+- **Icons**: Leveraging Lucide React.
+- **Database ORM**: Prisma for database operations.
+- **State Management**: Utilizing Zustand for state management.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running Locally
 
-## Learn More
+To run the project locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository: `git clone https://github.com/yashUcr773/SwiftChat.git`.
+2. Navigate to the project directory: `cd SwiftChat`.
+3. Install dependencies: `npm install`.
+4. Run the development server: `npm run dev`.
+5. The application will be accessible at `http://localhost:3000` by default.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `DATABASE_URL`: MongoDB database connection URL.
+- `NEXTAUTH_SECRET`: Secret key for NextAuth authentication.
+- `NEXT_PUBLIC_PUSHER_APP_KEY`, `PUSHER_APP_ID`, `PUSHER_SECRET`: Pusher API credentials for real-time messaging.
+- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`: Cloudinary cloud name for image storage.
+- `GITHUB_ID`, `GITHUB_SECRET`: GitHub OAuth client ID and client secret.
+- `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`: Google OAuth client ID and client secret.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Attribution
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The project idea was inspired by [Code with Antonio](https://www.youtube.com/watch?v=PGPGcKBpAk8).
+
+## Planned Features
+
+- [x] Real time Messaging
+- [] End to End Encryption
+- [] Send other things like videos and documents.
+- [x] Emojis
+- [x] Group Chat
+- [] Audio / video Calls
+- [x] Add Github and Google OAuth
+- [x] Add Facebook OAuth?
+
+
+Feel free to contribute and enhance the project!
