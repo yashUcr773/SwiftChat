@@ -2,6 +2,11 @@
 
 Demo - [swiftchat.dev](https://swiftchat.dev)
 
+Test Account
+- Email - demouser@mailsac.com
+- Password - demo_user_1
+- Username - demouser1
+
 ## Introduction
 SwiftChat is a peer-to-peer messaging application inspired from Facebook messenger. It allows users to exchange text messages, emojis, and images seamlessly. The application supports authentication through various platforms like GitHub and Google, ensuring a secure and personalized user experience. Messaging features are powered by the Pusher API, facilitating real-time communication. 
 
