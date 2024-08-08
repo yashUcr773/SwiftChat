@@ -10,6 +10,7 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import { signIn, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import DemoUserCreds from "./DemoUserCreds"
 
 type VARIANT = 'LOGIN' | "REGISTER"
 type SOCIALS = 'github' | 'google'
@@ -131,6 +132,7 @@ export default function AuthFormComponent() {
                         {variant === 'LOGIN' ? 'Create an account' : "Login"}
                     </div>
                 </div>
+                <DemoUserCreds></DemoUserCreds>
             </div>
         </div>
     )
